@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import { getIndianFormat } from "../utils/format";
 
 export const Transaction = ({ transaction }) => {
   const { deleteTransaction } = useContext(GlobalContext);
@@ -8,7 +9,7 @@ export const Transaction = ({ transaction }) => {
     <li className={transaction.amount < 0 ? "minus" : "plus"}>
       {transaction.text}{" "}
       <span>
-        {sign}₹{Math.abs(transaction.amount)}
+        {sign}₹{getIndianFormat(Math.abs(transaction.amount).toString())}
       </span>
       <button
         className="delete-btn"
